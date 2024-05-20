@@ -1,0 +1,1 @@
+surreal import --conn https://expenses-tracker-ph.fly.dev/ -u destin_ecarma -p bobosimark123 --ns expenses --db tracker data_set.surql

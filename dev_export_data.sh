@@ -1,0 +1,1 @@
+surreal export --conn http://localhost:5432 --user root --pass root --ns dev --db dev export.surql
