@@ -6,6 +6,6 @@ Expenses Tracker is a web application designed to help users manage their expens
 
 - SurrealDB: A high-performance database for storing data.
 
-License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
