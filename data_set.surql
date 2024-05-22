@@ -19,7 +19,7 @@ RELATE $category_id -> category_transaction -> ($transaction.id);
 RETURN { id: $transaction.id };
 } PERMISSIONS FULL;
 DEFINE FUNCTION fn::category_ownership($user_id: record<user>, $category_id: record<category>) { RETURN array::any((SELECT id FROM $user_id->user_category WHERE out = $category_id)); } PERMISSIONS FULL;
-DEFINE FUNCTION fn::transaction_ownership($category_id: record<category>, $transaction_id: record<transaction>) { RETURN array::any((SELECT id FROM $category_id->user_category WHERE out = $transaction_id)); } PERMISSIONS FULL;
+DEFINE FUNCTION fn::transaction_ownership($category_id: record<category>, $transaction_id: record<transaction>) { RETURN array::any((SELECT id FROM $category_id->category_transaction WHERE out = $transaction_id)); } PERMISSIONS FULL;
 
 -- ------------------------------
 -- TABLE: category
@@ -93,3 +93,7 @@ DEFINE INDEX user_categories_index ON user_category FIELDS in, out UNIQUE;
 DEFINE INDEX user_categories_out ON user_category FIELDS out UNIQUE;
 
 DEFINE EVENT user_category_delete ON user_category WHEN ($event = 'DELETE') THEN { DELETE $value.out; };
+
+-- ------------------------------
+-- TRANSACTION
+-- ------------------------------
